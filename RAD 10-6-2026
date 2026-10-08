@@ -4,11 +4,11 @@ public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         
-        System.out.print("Enter your name;");
-        String userName = scanner.next();
+        System.out.print("Enter your name:");
+        String userName = scanner.nextLine();
         
         System.out.print("Enter your address:");
-        String userAddress = scanner.next();
+        String userAddress = scanner.nextLine();
         
         System.out.print("Enter your age:");
         int userAge = scanner.nextInt();
@@ -19,30 +19,76 @@ public class Main {
         System.out.print("Enter your Height:");
         float userHeight = scanner.nextFloat();
 
-        System.out.println("Your name is " + userName + " You are " + userAge + " years old. You lived in " + userAddress + " and your weight is " + userWeight + " and your height is " + userHeight + ".");
+        System.out.println("Your name is " + userName + ", You are " + userAge + " years old. You lived in " + userAddress + " and your weight is " + userWeight + " and your height is " + userHeight + " meters.");
 
         scanner.close();
     }
 }
 
-// A#3
+// A#2 DIAGNOSTIC ACTIVITY
 import java.util.Scanner;
-
-public class diagnosticAcitivity {
+public class main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int n = input.nextInt();
 
-        for (int i = 1; i <= 30; i++) {
-            if (1 == 7) {
-                continue;              // skip 7
+        char again;
+
+        do {
+            System.out.print("Enter the number of x: ");
+            double x = input.nextDouble();
+
+            System.out.print("Enter the number of y: ");
+            double y = input.nextDouble();
+
+            System.out.print("Choose an operator (+, -, *, /): ");
+            char operator = input.next().charAt(0);
+
+            switch (operator) {
+                case '+': System.out.println("Answer: " + (x + y)); break;
+                case '-': System.out.println("Answer: " + (x - y)); break;
+                case '*': System.out.println("Answer: " + (x * y)); break;
+                case '/':
+                    if (y != 0) {
+                        System.out.println("Answer: " + (x / y));
+                    } else {
+                        System.out.println("Cannot divide by zero.");
+                    }
+                    break;
+
+                default:
+                    System.out.println("Invalid operator.");
             }
-            if (i % 30 == 0) {         // divisible by 30
+
+            System.out.print("Do you want to try again? (Y/N): ");
+            again = input.next().charAt(0);
+
+        } while (again == 'Y' || again == 'y' || again == '1');
+
+        System.out.println("Program closed.");
+        input.close();
+    }
+}
+
+// A#3 DIAGNOSTIC ACTIVITY
+import java.util.Scanner;
+public class main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter a value divisible by 30 but not greater than: ");
+        int number = input.nextInt();
+
+        if (number % 30 != 0 || number > 30 || number <= 0) {
+            System.out.println("The number is not divisible by 30.");
+        } else {
+            for (int i = 1; i <= number; i++) {
+                if (i == 7) {
+                    continue; 
+                }
                 System.out.println(i);
-            }
-            if (i == 30) {
-                break;                 // stop at 30
+                if (i == 30) {
+                    break;
+                }
             }
         }
         input.close();
